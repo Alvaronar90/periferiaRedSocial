@@ -36,7 +36,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-
+        System.out.println("filter");
         // Excluir rutas públicas
         String path = request.getRequestURI();
         if (path.startsWith("/auth/")) {
@@ -50,16 +50,22 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         final String userEmail;
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            System.out.println("if1");
             filterChain.doFilter(request, response);
             return;
         }
 
         jwt = authHeader.substring(7);
         userEmail = extractUsername(jwt);
-
+        System.out.println(userEmail);
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            System.out.println("if2");
+
             UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
+            System.out.println(userDetails);
             if (validateToken(jwt, userDetails)) {
+                System.out.println("if3");
+
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authToken);
@@ -94,6 +100,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
+        System.out.println(username);
+        System.out.println(userDetails.getUsername());
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
