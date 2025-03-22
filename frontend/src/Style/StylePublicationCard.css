@@ -1,0 +1,80 @@
+.publication-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f0f2f5;
+    margin: 15px 0;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Encabezado */
+  .publication-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .publication-header .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .publication-header .publication-date {
+    color: #777;
+    font-size: 0.9rem;
+  }
+  
+  /* Contenedor principal de la publicación */
+  .publication-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  /* Sección de likes */
+  .likes-section {
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #e4e6eb;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Cuadro para la imagen */
+  .image-container {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Texto */
+  .text-container {
+    flex-grow: 1;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  

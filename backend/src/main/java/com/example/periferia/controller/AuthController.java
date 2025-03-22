@@ -1,5 +1,6 @@
 package com.example.periferia.controller;
 
+import com.example.periferia.dto.ResponseLoginDto;
 import com.example.periferia.model.User;
 import com.example.periferia.repository.UserRepository;
 import com.example.periferia.security.JwtAuthFilter;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class AuthController {
 
     @Autowired
@@ -33,7 +35,6 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
         try {
-            // Registrar al usuario
             userService.registerUser(user.getName(), user.getEmail(), user.getPassword());
             return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado con éxito");
         } catch (Exception e) {
@@ -56,7 +57,12 @@ public class AuthController {
                 if (passwordEncoder.matches(user.getPassword(), foundUser.getPassword())) {
                     // Generar el token JWT
                     String token = jwtAuthFilter.generateToken(foundUser.getEmail());
-                    return ResponseEntity.ok(token);
+                    ResponseLoginDto dto = new ResponseLoginDto();
+                    dto.setId(foundUser.getId());
+                    dto.setToken(token);
+                    dto.setName(foundUser.getName());
+                    dto.setEmail(foundUser.getEmail());
+                    return ResponseEntity.ok(dto);
                 } else {
                     return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                             .body(new ApiError(HttpStatus.UNAUTHORIZED, "Credenciales inválidas"));

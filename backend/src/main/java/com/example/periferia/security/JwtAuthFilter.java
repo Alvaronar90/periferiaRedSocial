@@ -57,14 +57,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         jwt = authHeader.substring(7);
         userEmail = extractUsername(jwt);
-        System.out.println(userEmail);
+        System.out.println("linea60: "+userEmail);
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            System.out.println("if2");
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
-            System.out.println(userDetails);
+            System.out.println("userdet64: "+userDetails);
             if (validateToken(jwt, userDetails)) {
-                System.out.println("if3");
+                System.out.println("66");
 
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
@@ -99,9 +98,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {
+        System.out.println("101 "+token);
         final String username = extractUsername(token);
-        System.out.println(username);
-        System.out.println(userDetails.getUsername());
+        System.out.println("103 "+userDetails);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 

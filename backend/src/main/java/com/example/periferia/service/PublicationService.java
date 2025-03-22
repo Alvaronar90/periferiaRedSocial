@@ -21,7 +21,8 @@ public class PublicationService {
         return publicacionRepository.save(publicacion);
     }
 
-    public List<Publication> obtenerPublicacionesPorUsuario(Long usuarioId) {
+    public List<Publication> obtenerPublicacionesPorUsuario()
+    {
         return publicacionRepository.findAll();
     }
 

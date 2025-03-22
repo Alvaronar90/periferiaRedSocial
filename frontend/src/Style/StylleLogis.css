@@ -1,0 +1,102 @@
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Estilo para el header */
+  .header {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  /* Cuerpo de la página */
+  .body {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Sección izquierda (70%) */
+  .left-section {
+    width: 70%;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .card h2 {
+    margin-top: 10px;
+  }
+  
+  .card-image {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+  }
+  
+  /* Sección derecha (30%) */
+  .right-section {
+    width: 30%;
+    padding: 20px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .login-form label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .login-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-login, .btn-register {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-login:hover, .btn-register:hover {
+    background-color: #555;
+  }
+  
+  /* Estilo para el footer */
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/publications")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class PublicationController {
 
     @Autowired
@@ -31,10 +32,11 @@ public class PublicationController {
     }
 
     // Método GET para obtener las publicaciones de un usuario
-    @GetMapping("/{usuarioId}")
-    public ResponseEntity<Object> obtenerPublicaciones(@PathVariable Long usuarioId) {
+    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+    @GetMapping("/getPublications")
+    public ResponseEntity<Object> obtenerPublicaciones() {
         try {
-            List<Publication> publicaciones = publicacionService.obtenerPublicacionesPorUsuario(usuarioId);
+            List<Publication> publicaciones = publicacionService.obtenerPublicacionesPorUsuario();
             return new ResponseEntity<>(publicaciones, HttpStatus.OK);
         } catch (Exception e) {
             ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Error al obtener publicaciones: " + e.getMessage());
