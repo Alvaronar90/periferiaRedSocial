@@ -105,8 +105,8 @@ function Componente1() {
 					}).then(() => {
 						 // Guardamos el token y la información del usuario en el contextoresponse.data
              console.log(response.data)
-             const { token, name, email } = response.data;
-             login({ token, name, email });
+             const { token, name, email,id } = response.data;
+             login({ token, name, email,id });
    
              // Redirigimos al componente principal
              navigate('/principal');

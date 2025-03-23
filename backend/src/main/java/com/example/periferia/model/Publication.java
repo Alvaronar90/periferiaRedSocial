@@ -2,7 +2,6 @@ package com.example.periferia.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -17,7 +16,7 @@ public class Publication {
     private long usuarioId;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false,insertable = false, updatable = false)
+    @JoinColumn(name = "usuario_id", nullable = false, insertable = false, updatable = false)
     private User usuario;
 
     @Column(nullable = false, length = 1000)
@@ -26,13 +25,15 @@ public class Publication {
     @Column(nullable = false)
     private String texto;
 
-    @Column(name = "imagen_base64")
+    @Column(name = "imagen_base64", columnDefinition = "TEXT")
     private String imagenBase64;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "es-CO", timezone = "America/Bogota")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_publicacion", nullable = false, updatable = false)
     private Date fechaPublicacion;
+    @Transient
+    private Integer likes;
 
     public Publication() {
     }
@@ -101,5 +102,12 @@ public class Publication {
     public void setUsuarioId(long usuarioId) {
         this.usuarioId = usuarioId;
     }
-}
 
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+}
