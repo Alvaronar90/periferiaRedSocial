@@ -56,7 +56,7 @@ function Componente1() {
 						timer: 1500,
 					}).then(() => {
 						// Limpiar los campos del formulario
-						Formik.resetForm();
+						
 					});
 				} else {
 					Swal.fire({
@@ -245,7 +245,7 @@ function Componente1() {
 									)}
 
 									<button type="submit" className="btn-login">
-										Ingresar1
+										Ingresar
 									</button>
 									<button
 										type="button"
